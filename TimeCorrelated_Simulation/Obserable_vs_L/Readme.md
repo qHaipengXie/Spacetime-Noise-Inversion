@@ -1,1 +1,1 @@
-In the SNI simulation, the parameter LL needs to be manually adjusted to obtain different data points. With the current settings, the computation time for each data point ranges from 30 to 60 minutes, depending on the value of LL
+In the SNI simulation, the parameter L needs to be manually adjusted to obtain different data points. With the current settings, the computation time for each data point ranges from 30 to 60 minutes, depending on the value of L.
