@@ -96,7 +96,7 @@ if rank == 0:
         Result.append((mean,std))
     print(Result)
     print(gammalist_all_qubits)
-    with open('./Result/cPEC_x_n','wb')as f:
+    with open('./Plot/cPEC_x_n','wb')as f:
         pickle.dump(Result,f)
 
         
