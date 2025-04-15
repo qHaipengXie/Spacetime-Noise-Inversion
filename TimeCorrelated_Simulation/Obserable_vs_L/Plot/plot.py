@@ -1,7 +1,6 @@
 import numpy as np
 import pickle
 import matplotlib.pyplot as plt
-from matplotlib import pyplot as plt
 
 
 colors = plt.cm.viridis(np.linspace(0, 1, 6))
