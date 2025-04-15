@@ -63,7 +63,7 @@ if rank == 0:
         std = np.sqrt((gammalist[i]**2-mean**2)/(M*size))
         Result.append((mean,std))
     print(Result)
-    with open('./Result/SNI_x_n','wb')as f:
+    with open('./Plot/SNI_x_n','wb')as f:
         pickle.dump(Result,f)
 
 
