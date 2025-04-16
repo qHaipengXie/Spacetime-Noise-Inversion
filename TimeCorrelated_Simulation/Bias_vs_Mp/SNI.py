@@ -118,14 +118,16 @@ NumList = [2,2,3*L,3*L,3*L,4*L,2*L]
 strList = ['mex','spx','TX','TY','T','H','cx']
 
 
+P_max = 0
+P_min = 0
+for i in range(len(valueList_max)):
+    P_max = P_max + NumList[i]*np.log(valueList_max[i][0])
+    P_min = P_min + NumList[i]*np.log(valueList_min[i][0])
+P_max = 1-np.exp(P_max)
+P_min = 1-np.exp(P_min)
 def TotalErrorRate(Mp):
-    a = 0
-    b = 0
-    for i in range(len(valueList_max)):
-        a = a + NumList[i]*np.log(valueList_max[i][0])
-        b = b + NumList[i]*np.log(valueList_min[i][0])
-    p = (2-np.exp(a)-np.exp(b))/2
-    plist = np.random.binomial(1, p, Mp)
+    p = np.random.choice([P_max,P_min],size = Mp)
+    plist = np.random.binomial(1, p)
     p_estimation = sum(plist)/len(plist)
     return p_estimation
 
@@ -155,7 +157,7 @@ def Practical_ProcessedErrorSampler(Fluctuation):
     pauList[-1] = pauList[-1]+pauList[-1]
     Id = ''.join(pauList)
     Error = {}
-    k = np.random.choice(range(1000),p = sample_prolist_norm)+1
+    k = np.random.geometric((1-2*PAll_all)/(1-PAll_all))
     flag1 = (-1)**(k-1)
     if Fluctuation ==0:
         valueIdle = valueIdle_max
@@ -392,17 +394,10 @@ if __name__ == "__main__":
             gathered_results = comm.gather(local_results, root=0)
             
             if rank == 0:
-                a = 0
-                b = 0
-                for i in range(len(valueList_max)):
-                    a = a + NumList[i]*np.log(valueList_max[i][0])
-                    b = b + NumList[i]*np.log(valueList_min[i][0])
-                p = (2-np.exp(a)-np.exp(b))/2
-                gamma = p - PAll_all
-                print(gamma)
+                p = (P_min+P_max)/2
+                gamma = 1/((1-2*PAll_all)*(1-PAll_all))
                 results = [item for sublist in gathered_results for item in sublist]
-                res = np.abs(sum(results)/len(results)*gamma -(gamma/(1-PAll_all))*c)
-                
+                res = np.abs(gamma*sum(results)*(p - PAll_all)/len(results) -(p - PAll_all)*c/(1-PAll_all))
                 res0.append(res)
             else:
                 None
