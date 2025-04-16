@@ -295,16 +295,17 @@ with open(title + 'Mex','wb')as f1:
 
 
 Id = Operator.from_label('IIII')
-stab1 = Operator.from_label('XXIX')
+stab1 = Operator.from_label('XXXX')
 stab2 = Operator.from_label('IZIZ')
 stab3 = Operator.from_label('XIXI')
-stab4 = Operator.from_label('ZZZI')
+stab4 = Operator.from_label('ZZZZ')
 Cx0 = {}
 qc = QuantumCircuit(4)
 qc.h(0)
 qc.h(1)
 qc.cx(0,2)
 qc.cx(1,3)
+qc.cx(0,1)
 qc.append(edQError,[0])
 qc.append(edQError,[1])
 qc.cx(0,1)
