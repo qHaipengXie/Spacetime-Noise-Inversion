@@ -395,7 +395,7 @@ if __name__ == "__main__":
             None
     if rank ==0:
         print(meanlist)
-        fname = './Plot/cPEC_vs_Mp'
+        fname = './Plot/cPEC_Mp'
         with open(fname, 'wb') as fp:
             pickle.dump(res, fp)
 
