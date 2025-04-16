@@ -384,10 +384,6 @@ if __name__ == "__main__":
             else:
                 PAll_all = 0
             PAll_all = comm.bcast(PAll_all,root = 0)
-            sample_prolist = [PAll_all**k/(1-PAll_all)**(k+2) for k in range(1000)]
-            normfactor = sum(sample_prolist)
-            sample_prolist_norm = [x/normfactor for x in sample_prolist]
-            
             local_results = [task() for i in range(M)]
             local_results = [sum(local_results)/len(local_results)]
 
