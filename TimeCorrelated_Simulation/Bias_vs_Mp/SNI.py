@@ -407,7 +407,7 @@ if __name__ == "__main__":
     if rank ==0:
         end = time.time()
         print(end-star)
-        fname = './Plot/SNI_vs_Mp'
+        fname = './Plot/SNI_Mp'
         with open(fname, 'wb') as fp:
             pickle.dump(meanlist, fp)
 
