@@ -270,7 +270,7 @@ def InserTError(cir,qubit):
     return cir
 
 def InserTwirlingT(cir,qubit):
-    a = np.random.choice([0,1,2,3])
+    a = np.random.choice([0,1,2,3])#randomized twirling
     if a ==0:
         cir.id(qubit)
         cir.t(qubit)
