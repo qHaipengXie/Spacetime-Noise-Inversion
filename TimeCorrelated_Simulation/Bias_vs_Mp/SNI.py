@@ -362,7 +362,7 @@ if __name__ == "__main__":
     else:
         meanlist = None
       
-    M = 100
+    M = 10
     for i in range(20):
         Mp = 2**(i+1)
         if rank ==0:
