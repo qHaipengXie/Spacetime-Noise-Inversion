@@ -170,7 +170,7 @@ def Practical_ProcessedErrorSampler(Fluctuation):
     for i in range(len(pauList)-1):
         a = ''
         for j in range(len(pauList[i+1])):
-            a = a + ''.join(np.random.choice(keyIdle,p=valueIdle))
+            a = a + 'I'
         Error.update({strList[i+1]:a})
     if k == 0:
         return Error,flag1
