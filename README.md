@@ -1,4 +1,4 @@
-This repository contains the simulation source code for the paper "Unbiased Quantum Error Mitigation Without Reliance on an Accurate Error Model". 
+This repository contains the simulation source code for the paper "Noise-Agnostic Unbiased Quantum Error Mitigation for Logical Qubits" (10.1103/2n23-4qg8). 
 It utilizes the Qiskit (version 1.3.1), Qiskit-aer (version:0.15.1) for computations and the MPI4PY library for parallel execution.
 
 
